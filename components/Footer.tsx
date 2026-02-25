@@ -10,10 +10,11 @@ const Footer = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
         <div>
           <img 
-            src="/final logo exelus.png" 
+            src="/footer logo .png" 
             alt="Exelus Engineering" 
-className="h-14 w-auto object-contain mb-8 bg-white p-2 rounded-lg"
+className="h-20 w-auto  mb-18 "
           />
+          <br/>  
           <p className="text-sm leading-relaxed text-slate-400 font-medium mb-8">Specializing in thermal processing and industrial wastewater treatment solutions.</p>
           <a href={BROCHURE_URL} download="Exelus_Engineering_Brochure.pdf" className="inline-flex items-center gap-3 px-6 py-4 bg-brand-bright/10 text-brand-bright border border-brand-bright/20 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-brand-bright hover:text-white transition-all">
             <FileDown className="w-4 h-4" /> Company Brochure
