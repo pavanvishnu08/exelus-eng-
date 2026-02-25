@@ -8,7 +8,7 @@ import BrochureDownload from '../components/BrochureDownload';
 
 const DomainCard = ({ icon: Icon, title, items }: { icon: any, title: string, items: string[] }) => (
   <div className="bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-2xl hover:border-brand-bright/20 transition-all duration-500 group flex flex-col h-full">
-    <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-bright/5 text-brand-bright rounded-[1.25rem] md:rounded-[1.5rem] flex items-center justify-center mb-8 md:mb-10 group-hover:brand-gradient group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-lg shadow-brand-bright/10">
+    <div className="w-16 h-16 md:w-20 md:h-20 bg-brand-bright/5 text-brand-bright rounded-[1.25rem] md:rounded-[1.5rem] flex items-center justify-center mb-8 md:mb-10 group-hover:bg-brand-bright group-hover:text-brand-dark group-hover:scale-110 transition-all duration-500 shadow-lg shadow-brand-bright/10">
       <Icon className="w-8 h-8 md:w-10 md:h-10" />
     </div>
     <h3 className="text-xl md:text-2xl font-black text-brand-dark mb-6 md:mb-8 tracking-tighter uppercase leading-tight group-hover:text-brand-bright transition-colors">
