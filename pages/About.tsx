@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, Target, Eye, Leaf, HeartHandshake, Award, 
-  Settings, Search, PencilRuler, ShoppingCart, Factory, Truck, 
+  Settings, Search, PencilRuler, ShoppingCart, Factory, Construction, 
   Flag, ChevronRight, Globe, FileDown, ArrowRight, Users, Zap, CheckCircle
 } from 'lucide-react';
-import { BROCHURE_URL } from '../App';
+import BrochureDownload from '../components/BrochureDownload';
 
 const TurnkeyStep = ({ icon: Icon, title, desc, delay }: any) => (
   <div className="flex flex-col items-center text-center group animate-in fade-in slide-in-from-bottom duration-700" style={{ animationDelay: delay }}>
@@ -24,21 +24,23 @@ const About = () => {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="pt-32 md:pt-48 pb-24 md:pb-32 bg-brand-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
           <img src="/aboutus img.jpeg" className="w-full h-full object-cover" alt="" />
         </div>
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 md:mb-10 tracking-tighter uppercase leading-[0.9]">
-              About <br/><span className="text-brand-bright">Exelus</span>
-            </h1>
-            <p className="text-lg md:text-2xl text-slate-400 font-bold leading-relaxed max-w-2xl mx-auto italic border-l-4 border-brand-bright pl-6 md:pl-8 mb-10">
-              "An engineering-driven organization based in Telangana, delivering advanced thermal and wastewater processing equipment."
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a href={BROCHURE_URL} download="Exelus_Engineering_Profile.pdf" className="bg-brand-bright hover:bg-brand-deep text-white px-8 py-5 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 shadow-xl transition-all">
-                <FileDown className="w-4 h-4" /> Company Profile
-              </a>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20 max-w-7xl mx-auto">
+            <div className="w-full lg:w-auto">
+              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.9]">
+                About <br/> <span className="text-brand-bright">Exelus</span>
+              </h1>
+            </div>
+            <div className="w-full lg:flex-1 lg:max-w-xl">
+              <p className="text-lg md:text-2xl text-slate-400 font-bold leading-relaxed italic border-l-4 border-brand-bright pl-6 md:pl-8 mb-10">
+                "An engineering-driven organization based in Telangana, delivering advanced thermal and wastewater processing equipment."
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <BrochureDownload buttonText="Company Profile" fileName="Exelus_Engineering_Profile.pdf" />
+              </div>
             </div>
           </div>
         </div>
@@ -79,50 +81,35 @@ const About = () => {
         </div>
       </section>
 
-      {/* Why Us Section */}
+      {/* What Makes Us Different Section */}
       <section className="py-24 md:py-40 bg-white border-t border-slate-100">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 md:mb-24 max-w-4xl mx-auto">
-            <h2 className="text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] mb-6">Why Choose Exelus?</h2>
-            <h3 className="text-3xl md:text-6xl font-black text-brand-dark mb-8 md:mb-10 tracking-tighter uppercase leading-tight">Engineering Differentiators</h3>
-            <p className="text-slate-500 font-bold text-base md:text-lg italic leading-relaxed">
-              At Exelus Engineering, we pride ourselves on delivering innovative and efficient wastewater treatment solutions tailored to meet your specific needs.
-            </p>
+            <h2 className="text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] mb-6">WHAT MAKES EXELUS DIFFERENT</h2>
+            <h3 className="text-3xl md:text-6xl font-black text-brand-dark mb-8 md:mb-10 tracking-tighter uppercase leading-tight">Our Differentiators</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-            {[
-              { 
-                icon: Users, 
-                title: "Professional Team", 
-                desc: "Exelus customizes solutions for every project to ensure optimal performance" 
-              },
-              { 
-                icon: Award, 
-                title: "Certified Engineers", 
-                desc: "Our certified Engineers guarantee top quality and performance in our equipments" 
-              },
-              { 
-                icon: Zap, 
-                title: "Latest Technology", 
-                desc: "We stay ahead of industry trends to ensure our solutions are effective and future-proof" 
-              },
-              { 
-                icon: ShieldCheck, 
-                title: "Reliability", 
-                desc: "Thorough testing to ensure our wastewater treatment plants operate efficiently and reliably" 
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 group hover:bg-brand-bright transition-all duration-500 shadow-sm hover:shadow-2xl hover:shadow-brand-bright/20">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-md group-hover:scale-110 transition-transform">
-                  <item.icon className="w-8 h-8 text-brand-bright" />
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 gap-6">
+              {[
+                "Engineering-first organization (not a trading or standard skid supplier)",
+                "Strong integration of process, mechanical, and structural engineering",
+                "Custom-designed systems based on actual operating conditions",
+                "Advanced digital tools: PFD, P&ID, 3D modelling, STAAD Pro, Tekla",
+                "Capability to audit, retrofit, modify, and expand existing plants",
+                "Strong focus on OPEX reduction and efficiency improvement",
+                "Long-term technical partnership approach"
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-brand-bright hover:border-brand-bright transition-all duration-300 group">
+                  <div className="w-8 h-8 bg-brand-bright rounded-full flex items-center justify-center shrink-0 group-hover:bg-white transition-colors">
+                    <CheckCircle className="w-5 h-5 text-white group-hover:text-brand-bright" />
+                  </div>
+                  <p className="text-sm md:text-lg font-bold text-brand-dark group-hover:text-white transition-colors leading-relaxed">
+                    {item}
+                  </p>
                 </div>
-                <h4 className="text-xl font-black text-brand-dark mb-4 uppercase tracking-tighter group-hover:text-white transition-colors">{item.title}</h4>
-                <p className="text-[11px] md:text-xs text-slate-500 font-bold uppercase tracking-widest leading-relaxed group-hover:text-white/80 transition-colors">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -165,7 +152,7 @@ const About = () => {
               <TurnkeyStep icon={PencilRuler} title="Modeling" desc="Simulation Mastery" delay="100ms" />
               <TurnkeyStep icon={ShoppingCart} title="Fabrication" desc="In-House Build" delay="200ms" />
               <TurnkeyStep icon={Factory} title="Project Mgmt" desc="EPC Execution" delay="300ms" />
-              <TurnkeyStep icon={Truck} title="Erection" desc="Site Installation" delay="400ms" />
+              <TurnkeyStep icon={Construction} title="Erection" desc="Site Installation" delay="400ms" />
               <TurnkeyStep icon={Flag} title="Commissioning" desc="Performance Run" delay="500ms" />
             </div>
           </div>

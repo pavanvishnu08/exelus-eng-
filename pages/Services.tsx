@@ -5,7 +5,7 @@ import {
   Search, TrendingDown, Settings, ArrowRight, FileDown, 
   CheckCircle, Zap, ShieldCheck, Factory, Cpu
 } from 'lucide-react';
-import { BROCHURE_URL } from '../App';
+import BrochureDownload from '../components/BrochureDownload';
 
 const ServiceTabContent = ({ 
   icon: Icon, title, desc, details, items 
@@ -46,10 +46,10 @@ const ServiceTabContent = ({
         <div className="aspect-[4/3] bg-slate-100 rounded-2xl overflow-hidden border-4 border-white shadow-xl max-w-md mx-auto lg:max-w-none">
            <img 
             src={title.includes('Audit') 
-              ? "/img2.jpeg" 
+              ? "/audit.jpeg" 
               : title.includes('Retrofit')
-              ? "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600"
-              : "/img3.jpeg"
+              ? "/retrofit.jpeg"
+              : "/execution.jpeg"
             } 
             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
             alt={title} 
@@ -119,7 +119,7 @@ const Services = () => {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-brand-dark text-white pt-32 md:pt-48 pb-20 md:pb-28 overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-40 pointer-events-none">
            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1920" className="w-full h-full object-cover" alt="Industrial Engineering" />
         </div>
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -132,9 +132,7 @@ const Services = () => {
               Transforming conventional processes into dynamic systems through technical excellence and lifecycle thinking.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href={BROCHURE_URL} download="Exelus_Services_Guide.pdf" className="bg-brand-bright hover:bg-brand-deep text-white px-8 py-5 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center gap-3 shadow-xl transition-all">
-                <FileDown className="w-4 h-4" /> Technical Profile
-              </a>
+              <BrochureDownload buttonText="Technical Profile" fileName="Exelus_Services_Guide.pdf" />
             </div>
           </div>
         </div>
@@ -198,8 +196,8 @@ const Services = () => {
       <section className="py-24 md:py-40 bg-white">
         <div className="container mx-auto px-6">
            <div className="max-w-5xl mx-auto bg-brand-dark rounded-[3rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-3xl">
-              <div className="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=1920" className="w-full h-full object-cover" alt="Philosophy" /></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-dark to-brand-deep/80"></div>
+              <div className="absolute inset-0 opacity-50"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=1920" className="w-full h-full object-cover" alt="Philosophy" /></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/60 to-brand-deep/60"></div>
               
               <div className="relative z-10">
                 <h3 className="text-2xl sm:text-3xl md:text-5xl font-black mb-10 md:mb-12 tracking-tighter leading-tight italic">

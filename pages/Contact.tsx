@@ -81,9 +81,9 @@ Inquiry generated via Exelus Engineering Website.
           <img 
             src="/contact img.jpeg" 
             alt="Contact Banner" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-brand-dark/70"></div>
+          <div className="absolute inset-0 bg-brand-dark/40"></div>
         </div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-bright skew-x-[-20deg] translate-x-1/2 opacity-20 blur-3xl" />
         <div className="container mx-auto px-6 relative z-10 text-center">

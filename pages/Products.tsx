@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -32,9 +31,9 @@ const SpecsTable = ({ data }: { data: { label: string, value: string }[] }) => (
 );
 
 const ProductContent = ({ 
-  id, title, subtitle, desc, moc, features, specs, deepContent, image 
+  id, title, subtitle, desc, moc, features, specs, deepContent, image, mocTitle, featuresTitle, hideMoc 
 }: { 
-  id: string, title: string, subtitle: string, desc: string, moc: string[], features: string[], specs: {label: string, value: string}[], deepContent: string, image: string 
+  id: string, title: string, subtitle: string, desc: string, moc: string[], features: string[], specs: {label: string, value: string}[], deepContent: string, image: string, mocTitle?: string, featuresTitle?: string, hideMoc?: boolean 
 }) => (
   <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
     <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr_0.8fr] gap-10 md:gap-20 items-center mb-20">
@@ -48,23 +47,28 @@ const ProductContent = ({
           {deepContent}
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-12">
+        <div className={`grid gap-10 mb-12 ${hideMoc ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2'}`}>
+          {!hideMoc && (
+            <div className="space-y-6">
+              <p className="text-[10px] md:text-xs font-black uppercase text-slate-400 border-b border-slate-100 pb-3 flex items-center gap-3">
+                <ShieldCheck className="w-4 h-4 text-brand-bright" /> {mocTitle ?? 'Metallurgy (MOC)'}
+              </p>
+              <ul className="space-y-3">
+                {moc.map(v => {
+                  const isSubtype = v.startsWith('  •');
+                  return (
+                    <li key={v} className={`flex gap-3 items-center group ${isSubtype ? 'ml-6 text-slate-500' : 'text-brand-dark'}`}>
+                      {!isSubtype && <div className="w-2 h-2 rounded-full bg-brand-bright/40 group-hover:bg-brand-bright transition-all shrink-0" />}
+                      <span className={`tracking-tight ${isSubtype ? 'text-sm md:text-base font-bold' : 'text-sm md:text-lg font-black'}`}>{isSubtype ? v.replace('  • ', '') : v}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
           <div className="space-y-6">
             <p className="text-[10px] md:text-xs font-black uppercase text-slate-400 border-b border-slate-100 pb-3 flex items-center gap-3">
-              <ShieldCheck className="w-4 h-4 text-brand-bright" /> Metallurgy (MOC)
-            </p>
-            <ul className="space-y-4">
-              {moc.map(v => (
-                <li key={v} className="flex gap-4 text-sm md:text-lg font-black text-brand-dark items-center group">
-                  <div className="w-2 h-2 rounded-full bg-brand-bright/40 group-hover:bg-brand-bright transition-all shrink-0" /> 
-                  <span className="tracking-tight">{v}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-6">
-            <p className="text-[10px] md:text-xs font-black uppercase text-slate-400 border-b border-slate-100 pb-3 flex items-center gap-3">
-              <Settings className="w-4 h-4 text-brand-bright" /> Design Features
+              {featuresTitle !== '' && <Settings className="w-4 h-4 text-brand-bright" />} {featuresTitle ?? 'Design Features'}
             </p>
             <ul className="space-y-4">
               {features.map(v => (
@@ -139,30 +143,35 @@ const Products = () => {
       id: 'evaporators',
       subtitle: 'Thermal Separation Technology',
       title: 'MEE & MVR Systems',
-      image: 'imh7.jpeg',
+      image: '/mee.jpeg',
       desc: 'Advanced concentration systems designed for high thermal effectiveness and operational reliability.',
       deepContent: 'Including Falling Film, Forced Circulation, and Mechanical Vapour Recompression (MVR) systems designed to minimize fouling and reduce specific energy consumption.',
-      moc: ['SS 316L', 'Duplex / Super Duplex', 'High Nickel Alloys', 'Titanium'],
-      features: ['Anti-Scaling Design', 'High Steam Economy', 'MVRE Technology', 'Automated Operation'],
+      moc: ['Falling Film Evaporators', 'Forced Circulation Evaporators', 'Rising Film Evaporators', 'Multi-Effect Evaporators (MEE)', 'Mechanical Vapour Recompression (MVR)'],
+      features: ['High heat transfer efficiency', 'Anti-scaling design philosophy', 'Low specific energy consumption', 'Compact footprint','Fully automated operation'],
+      mocTitle: 'Technology Options',
+      featuresTitle: 'Key Advantages',
       specs: [
         { label: 'Capacity', value: '0.5 to 100 m³/hr' },
         { label: 'Steam Economy', value: 'Up to 6.5 (MEE)' },
         { label: 'Energy (MVR)', value: '25–60 kWh/m³' },
-        { label: 'Concentration', value: 'Up to 98% Recovery' }
+        { label: 'Concentration', value: 'Up to 98% Recovery' },
+        { label: 'MOC', value: 'SS316L / Duplex / Titanium' }
       ]
     },
     dryers: {
       id: 'dryers',
       subtitle: 'Advanced Solids Management',
       title: 'ATFD & Dryers',
-      image: '/img4.jpeg',
+      image: '/ATFD.jpeg',
       desc: 'Agitated Thin Film Dryers (ATFD) engineered for processing sticky, corrosive, and abrasive materials.',
       deepContent: 'Continuous systems that convert slurry into free-flowing powder with moisture reduction down to less than 5%, ideal for ZLD and solids recovery.',
-      moc: ['Hastelloy', 'Alloy 20', 'SS 316 Ti', 'Duplex'],
+      moc: [],
       features: ['Single Pass Drying', 'Low Maintenance', 'Solids Management', 'Continuous Discharge'],
+      hideMoc: true,
       specs: [
+        { label: 'Capacity', value: '0.5 to 40 m²' },
         { label: 'Moisture Level', value: '< 5–10% Final' },
-        { label: 'Heat Source', value: 'Steam / Thermal Oil' },
+        { label: 'Heat Source', value: 'Steam / Thermal Oil / Hot Water / Ceramic band heaters' },
         { label: 'Operation', value: 'PLC Automated' },
         { label: 'Feed Types', value: 'Slurry / Concentrates' }
       ]
@@ -174,8 +183,20 @@ const Products = () => {
       image: 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&q=80&w=1000',
       desc: 'High-precision Shell & Tube exchangers and industrial vapor condensation systems.',
       deepContent: 'Optimized for complex industrial process cycles, ensuring durability and high thermal effectiveness in both process and utility applications.',
-      moc: ['Stainless Steel', 'Carbon Steel', 'Copper Alloys', 'Titanium'],
-      features: ['Thermal Optimization', 'Process Cycle Ready', 'Compact Footprint', 'Robust Fabrication'],
+      moc: [
+        'Calandia',
+        '  • Falling Film',
+        '  • Force circulation',
+        '  • Raising Film',
+        'Condenser',
+        '  • Vertical Condenser',
+        '  • Horizontal Condenser',
+        '  • Box type Condenser',
+        'Plate Type Heat Exchanger'
+      ],
+      features: [],
+      mocTitle: 'Types',
+      featuresTitle: '',
       specs: [
         { label: 'Standard Codes', value: 'TEMA / ASME' },
         { label: 'Types', value: 'Shell & Tube / Condensers' },
@@ -190,8 +211,10 @@ const Products = () => {
       image: '/img8.jpeg',
       desc: 'Turnkey wastewater treatment solutions achieving maximum water recovery and environmental compliance.',
       deepContent: 'From Primary treatment to Biological stages (MBBR/SBR) and tertiary polishing, our ZLD systems ensure 95-99% water recovery for process reuse.',
-      moc: ['FRP / PP Lined', 'Coated Steel', 'SS 316', 'Composite'],
-      features: ['MBBR / SBR Biological', 'UF / RO Integration', 'Stripper Columns', 'Resource Recovery'],
+      moc: ['Chemicals & Specialty Chemicals', 'Pharmaceuticals & APIs', 'Food & Beverage', 'Textiles & Dyeing', 'Power & Energy', 'Mining & Metallurgy', 'CETP & Environmental Projects'],
+      features: [],
+      mocTitle: 'INDUSTRIES SERVED',
+      featuresTitle: '',
       specs: [
         { label: 'Water Recovery', value: '95% to 99.5%' },
         { label: 'Treatment Stages', value: 'Primary / Bio / Tertiary' },
@@ -216,9 +239,9 @@ const Products = () => {
           <img 
             src="/products img.jpeg" 
             alt="Products Banner" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-brand-dark/70"></div>
+          <div className="absolute inset-0 bg-brand-dark/40"></div>
         </div>
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto mb-10">

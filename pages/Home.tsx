@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowRight, CheckCircle, Play, ChevronLeft, ChevronRight, Droplets, Factory, Layout, Zap, Beaker, Leaf, FlaskConical, FileDown, Database, ShieldCheck, Target
+  ArrowRight, CheckCircle, Play, ChevronLeft, ChevronRight, Droplets, Factory, Layout, Zap, Beaker, Leaf, FlaskConical, FileDown, Database, ShieldCheck, Target, Award, Users, Lightbulb, Star, Pill, UtensilsCrossed, Palette, Mountain, TreePine, FileCheck, Search, ClipboardCheck
 } from 'lucide-react';
-import { BROCHURE_URL } from '../App';
+import BrochureDownload from '../components/BrochureDownload';
 
 const DomainCard = ({ icon: Icon, title, items }: { icon: any, title: string, items: string[] }) => (
   <div className="bg-white p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-2xl hover:border-brand-bright/20 transition-all duration-500 group flex flex-col h-full">
@@ -30,7 +30,7 @@ const Home = () => {
 
   const slides = [
     {
-      title: "Advanced Process Equipment ETP, ZLD, EPC Solutions",
+      title: "Specialists in Design, Engineering & Execution of ZLD, MEE, MVRE, Distillation, ATFD and Heat recover Systems.",
       subtitle: "High-recovery ETP and ZLD systems designed for zero environmental footprint and resource recovery.",
       image: "/home1.jpeg",
     },
@@ -52,21 +52,21 @@ const Home = () => {
       <section className="relative min-h-[600px] h-[100svh] flex items-stretch overflow-hidden z-10">
         {slides.map((slide, index) => (
           <div key={index} className={`absolute inset-0 transition-all duration-[1200ms] ease-out ${index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110 pointer-events-none'}`}>
-            <img src={slide.image} className="w-full h-full object-cover brightness-[0.25]" alt={slide.title} />
-            <div className="absolute inset-0 hero-gradient" />
+            <img src={slide.image} className="w-full h-full object-cover brightness-[0.55]" alt={slide.title} />
+            <div className="absolute inset-0 hero-gradient opacity-60" />
             <div className="container mx-auto px-6 md:px-12 absolute inset-0 flex items-center pt-24 md:pt-32">
               <div className={`max-w-6xl transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'}`}>
                 <div className="flex items-center gap-4 mb-6 md:mb-8">
                   <span className="h-px w-8 md:w-12 bg-brand-bright"></span>
                   <span className="text-brand-bright text-[14px] md:text-[16px] font-black tracking-[0.3em] md:tracking-[0.5em] uppercase">Engineering the Future of Industrial Sustainability</span>
                 </div>
-<h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] mb-8 md:mb-10 tracking-tighter text-white uppercase break-normal">
+                <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.05] mb-8 md:mb-10 tracking-tighter text-white uppercase break-normal">
                   {slide.title}
                 </h1>
                 <p className="text-sm md:text-xl text-slate-300 mb-8 md:mb-12 leading-relaxed max-w-2xl font-medium border-l-4 border-brand-bright pl-6 md:pl-10 italic">{slide.subtitle}</p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-5">
                   <Link to="/products" className="bg-brand-bright hover:bg-brand-deep text-white px-8 md:px-12 py-4 md:py-6 rounded-xl font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-[9px] md:text-[10px] flex items-center justify-center gap-3 md:gap-4 shadow-3xl shadow-brand-bright/20 active:scale-95 transition-all">Our Portfolio <ArrowRight className="w-4 h-4" /></Link>
-                  <a href={BROCHURE_URL} download="Exelus_Engineering_Brochure.pdf" className="bg-white/10 backdrop-blur-xl hover:bg-white/20 text-white border border-white/20 px-8 md:px-12 py-4 md:py-6 rounded-xl font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-[9px] md:text-[10px] flex items-center justify-center gap-3 transition-all">Download Brochure <FileDown className="w-4 h-4" /></a>
+                  <BrochureDownload variant="outline" buttonText="Download Brochure" fileName="Exelus_Engineering_Brochure.pdf" />
                 </div>
               </div>
             </div>
@@ -152,17 +152,125 @@ const Home = () => {
       </section>
 
       {/* operational segments */}
-      <section className="py-24 md:py-40 bg-slate-50">
+      <section className="py-24 md:py-40 bg-brand-dark text-white">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
              <h2 className="text-[9px] md:text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] md:tracking-[0.8em] mb-6 md:mb-8">Process Mastery</h2>
-             <h3 className="text-3xl md:text-6xl font-black text-brand-dark tracking-tighter uppercase leading-tight">Operational Segments</h3>
+             <h3 className="text-3xl md:text-6xl font-black text-white tracking-tighter uppercase leading-tight">Operational Segments</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
             <DomainCard icon={Database} title="Chemical Reactors" items={['Batch & Continuous', '50L to 300KL Capacity', 'High-Pressure Duty', 'Agitation Systems']} />
             <DomainCard icon={Droplets} title="Evaporation" items={['Multi-Effect Evaporators', 'MVR/MVRE Systems', 'Optimal Heat Utilization', 'Energy Efficiency']} />
             <DomainCard icon={Layout} title="Water & ZLD" items={['Effluent Treatment (ETP)', 'Zero Liquid Discharge', 'MBBR/SBR Technology', 'Water Recovery']} />
             <DomainCard icon={Zap} title="Heat Transfer" items={['Heat Exchangers', 'Shell & Tube Units', 'Process Vessels', 'ASME/TEMA Standard']} />
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="py-24 md:py-40 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+            <h2 className="text-[9px] md:text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] md:tracking-[0.8em] mb-6 md:mb-8">Our Principles</h2>
+            <h3 className="text-3xl md:text-6xl font-black text-brand-dark tracking-tighter uppercase leading-tight">Core Values</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {[
+              { 
+                icon: ShieldCheck, 
+                title: "Engineering Integrity", 
+                desc: "Upholding the highest standards of technical excellence and ethical engineering practices"
+              },
+              { 
+                icon: Users, 
+                title: "Customer-Centric Execution", 
+                desc: "Putting client needs at the center of every solution we design and deliver"
+              },
+              { 
+                icon: Lightbulb, 
+                title: "Continuous Innovation", 
+                desc: "Constantly evolving our technologies and methodologies to stay ahead"
+              },
+              { 
+                icon: Leaf, 
+                title: "Sustainability Focus", 
+                desc: "Committed to environmentally responsible engineering and resource conservation"
+              },
+              { 
+                icon: Star, 
+                title: "Quality Without Compromise", 
+                desc: "Delivering excellence in every component, system, and service we provide"
+              }
+            ].map((item, i) => (
+              <div key={i} className="p-8 md:p-10 bg-slate-50 rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 hover:bg-brand-bright hover:border-brand-bright hover:shadow-2xl hover:shadow-brand-bright/20 transition-all duration-500 group">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-[1.25rem] md:rounded-[1.5rem] flex items-center justify-center mb-6 md:mb-8 shadow-md group-hover:scale-110 transition-transform">
+                  <item.icon className="w-8 h-8 md:w-10 md:h-10 text-brand-bright group-hover:text-brand-dark" />
+                </div>
+                <h4 className="text-lg md:text-xl font-black text-brand-dark mb-3 md:mb-4 uppercase tracking-tighter group-hover:text-white transition-colors">
+                  {item.title}
+                </h4>
+                <p className="text-xs md:text-sm text-slate-500 font-bold leading-relaxed group-hover:text-white/80 transition-colors">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Served Section */}
+      <section className="py-24 md:py-40 bg-brand-dark text-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+            <h2 className="text-[9px] md:text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] md:tracking-[0.8em] mb-6 md:mb-8">Our Reach</h2>
+            <h3 className="text-3xl md:text-6xl font-black text-white tracking-tighter uppercase leading-tight">Industries Served</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { icon: FlaskConical, title: "Chemicals & Specialty Chemicals" },
+              { icon: Pill, title: "Pharmaceuticals & APIs" },
+              { icon: UtensilsCrossed, title: "Food & Beverage" },
+              { icon: Palette, title: "Textiles & Dyeing" },
+              { icon: Zap, title: "Power & Energy" },
+              { icon: Mountain, title: "Mining & Metallurgy" },
+              { icon: TreePine, title: "CETP & Environmental Projects" }
+            ].map((item, i) => (
+              <div key={i} className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-[1.5rem] md:rounded-[2rem] hover:bg-brand-bright hover:border-brand-bright hover:shadow-2xl hover:shadow-brand-bright/20 transition-all duration-500 group">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-brand-bright/20 rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-white transition-colors">
+                  <item.icon className="w-6 h-6 md:w-7 md:h-7 text-brand-bright group-hover:text-brand-dark" />
+                </div>
+                <h4 className="text-sm md:text-base font-black text-white uppercase tracking-tighter leading-tight group-hover:text-white transition-colors">
+                  {item.title}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quality & Standards Section */}
+      <section className="py-24 md:py-40 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="text-center mb-16 md:mb-24 max-w-3xl mx-auto">
+            <h2 className="text-[9px] md:text-[10px] font-black text-brand-bright uppercase tracking-[0.5em] md:tracking-[0.8em] mb-6 md:mb-8">Certifications</h2>
+            <h3 className="text-3xl md:text-6xl font-black text-brand-dark tracking-tighter uppercase leading-tight">Quality & Standards</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { icon: Award, title: "ASME, TEMA, IS compliance" },
+              { icon: FileCheck, title: "Approved WPS / PQR" },
+              { icon: Search, title: "Material traceability" },
+              { icon: ClipboardCheck, title: "Inspection & testing protocols" }
+            ].map((item, i) => (
+              <div key={i} className="p-6 md:p-8 bg-slate-50 rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 hover:bg-brand-bright hover:border-brand-bright hover:shadow-2xl hover:shadow-brand-bright/20 transition-all duration-500 group">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                  <item.icon className="w-6 h-6 md:w-7 md:h-7 text-brand-bright group-hover:text-brand-dark" />
+                </div>
+                <h4 className="text-sm md:text-base font-black text-brand-dark uppercase tracking-tighter leading-tight group-hover:text-white transition-colors">
+                  {item.title}
+                </h4>
+              </div>
+            ))}
           </div>
         </div>
       </section>

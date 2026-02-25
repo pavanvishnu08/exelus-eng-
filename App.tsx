@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { 
@@ -8,6 +7,7 @@ import {
 // Components
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BrochureDownload from './components/BrochureDownload';
 
 // Pages
 import Home from './pages/Home';
@@ -58,9 +58,7 @@ const DeepDivePage = ({ title, category, image }: { title: string, category: str
               <Link to="/contact" className="inline-flex items-center gap-4 bg-brand-bright text-white px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-brand-deep transition-all shadow-lg shadow-brand-bright/20">
                 Request Quote <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href={BROCHURE_URL} download="Exelus_Engineering_Specs.pdf" className="inline-flex items-center gap-4 bg-slate-900 text-white px-8 py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-black transition-all shadow-lg">
-                Technical Data <FileDown className="w-4 h-4" />
-              </a>
+              <BrochureDownload variant="secondary" buttonText="Technical Data" fileName="Exelus_Engineering_Specs.pdf" />
             </div>
           </div>
           <div className="bg-slate-50 rounded-[2.5rem] p-12 border border-slate-200">

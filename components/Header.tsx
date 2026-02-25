@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, FileDown } from 'lucide-react';
-import { BROCHURE_URL } from '../App';
+import BrochureDownload from './BrochureDownload';
 
 const NavLogo = () => (
   <Link to="/" className="flex items-center gap-1.5 md:gap-3 group max-w-[65%] sm:max-w-none shrink">
@@ -63,9 +63,11 @@ const Header = () => {
               </Link>
             ))}
             <div className="flex items-center gap-3">
-              <a href={BROCHURE_URL} download className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border border-slate-200 text-brand-dark hover:bg-slate-50">
-                <FileDown className="w-4 h-4" /> Brochure
-              </a>
+              <BrochureDownload 
+                buttonText="Brochure" 
+                fileName="Exelus_Engineering_Brochure.pdf"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border border-slate-200 text-brand-dark hover:bg-slate-50 !bg-transparent !text-brand-dark !shadow-none hover:!bg-slate-50"
+              />
               <Link to="/contact" className="px-5 py-2.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all shadow-xl bg-brand-bright text-white hover:bg-brand-deep active:scale-95">
                 Inquiry
               </Link>
@@ -127,13 +129,11 @@ const Header = () => {
 
         {/* Action Buttons at Bottom */}
         <div className="p-6 md:p-8 border-t border-white/10 bg-brand-deep/30 flex flex-col gap-4">
-           <a 
-             href={BROCHURE_URL} 
-             download 
-             className="flex items-center justify-center gap-3 w-full bg-white/5 text-white py-4 rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs border border-white/10 hover:bg-white/10 transition-all active:scale-[0.98]"
-           >
-             <FileDown className="w-4 h-4 md:w-5 md:h-5" /> Technical Guide
-           </a>
+           <BrochureDownload 
+             buttonText="Technical Guide" 
+             fileName="Exelus_Engineering_Brochure.pdf"
+             className="flex items-center justify-center gap-3 w-full bg-white/5 text-white py-4 rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs border border-white/10 hover:bg-white/10 transition-all active:scale-[0.98] !shadow-none"
+           />
            <Link 
              to="/contact" 
              className="block w-full bg-brand-bright text-white py-5 rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs shadow-2xl text-center active:scale-[0.98] transition-all"
